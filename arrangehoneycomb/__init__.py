@@ -6,7 +6,7 @@ from shutil import copyfile
 import time
 
 
-def arrange(ini_path=None, hex_radius=38, origin_x=1920/2, origin_y=1080/2):
+def arrange(ini_path=None, hex_radius=38, origin_x=1920 / 2, origin_y=1080 / 2):
     if ini_path is None:
         ini_path = os.path.join(
             os.path.expanduser("~"), "AppData", "Roaming", "Rainmeter", "Rainmeter.ini"
@@ -36,14 +36,16 @@ def arrange(ini_path=None, hex_radius=38, origin_x=1920/2, origin_y=1080/2):
     pixels = cube_to_pixel(spiral, hex_radius)
     for i, section in enumerate(active_honeycombs):
         pix = pixels[i]
-        x, y = int(origin_x + pix[0] - (hex_radius / 2)), int(origin_y + pix[1] - (hex_radius / 2))
-        properly_placed = config.getint(section, "WindowX") == x and config.getint(section, "WindowY") == y
+        x, y = (
+            int(origin_x + pix[0] - (hex_radius / 2)),
+            int(origin_y + pix[1] - (hex_radius / 2)),
+        )
+        properly_placed = (
+            config.getint(section, "WindowX") == x
+            and config.getint(section, "WindowY") == y
+        )
         if properly_placed:
-            print(
-                "Not moving {}, it's already in the correct position".format(
-                    section
-                )
-            )
+            print("Not moving {}, it's already in the correct position".format(section))
         else:
             print("Moving {} to ({},{})".format(section, x, y))
             changed = True
