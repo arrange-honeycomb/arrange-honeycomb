@@ -13,15 +13,16 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/arrange-honeycomb/arrange-honeycomb/",
     packages=find_packages(),
-    install_requires=['hexy', 'numpy'],
+    install_requires=['hexy'],
     entry_points={
         'console_scripts': [
             'arrange-honeycomb = arrangehoneycomb.__main__:main'
         ]
     },
     classifiers=[
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3 :: Only",
         "License :: OSI Approved :: MIT License",
+        "Operating System :: Microsoft :: Windows",
     ],
+    python_requires='>=3.6',
 )
